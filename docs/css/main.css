@@ -27,29 +27,9 @@
  *  ===========================
 */
 
-.lesson {
-    list-style-position: inside;
-}
 
-.lesson1 ul {
-    margin: 0 15px;
-}
 
 /** ===========================
  *  media
  *  ===========================
 */
-
-@media (max-width: 1440px) {
-    .div-margins {
-        width: 79.17%;
-        margin: 100px auto;
-    }
-}
-
-@media (max-width: 425px) {
-    .div-margins {
-        width: 100%;
-        margin: 100px 44.266px;
-    }
-}
