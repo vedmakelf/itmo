@@ -188,7 +188,7 @@
                     alert(`Все тарелки вымыты, моющее средство закончилось`);
                     break;
                 case dishes === 0 && detergents > 0:
-                    alert(`Все тарелки вымыты. Осталось ${detergents} л моющего средства`);
+                    alert(`Все тарелки вымыты. Осталось ${detergents.toFixed(2)} л моющего средства`);
                     break;
                 case dishes > 0 && detergents === 0:
                     alert(`Моющее средство закончилось. Осталось ${dishes} тарелок`);
