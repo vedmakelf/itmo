@@ -31,8 +31,8 @@
     list-style-position: inside;
 }
 
-.lesson1 ul {
-    margin: 0 15px;
+.lesson1 ul, .lesson2 ul {
+    margin: 0 25px;
 }
 
 /** ===========================
