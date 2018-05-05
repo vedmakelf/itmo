@@ -179,7 +179,7 @@
             //3) если мы помыли все тарелки и моющее средство закончилось, то вывести: 'Все тарелки вымыты, моющее средство закончилось'
             var dishes = parseInt(prompt(`Введите количество тарелок`));
             var detergents = parseFloat(prompt(`Введите количество моющего средства в литрах`).replace(',', '.'));
-            while (dishes > 0 && detergents > 0) {
+            while (dishes > 0 && detergents >= 0.5) {
                 dishes -= 1;
                 detergents -= 0.5;
             }
@@ -190,11 +190,11 @@
                 case dishes === 0 && detergents > 0:
                     alert(`Все тарелки вымыты. Осталось ${detergents.toFixed(2)} л моющего средства`);
                     break;
-                case dishes > 0 && detergents === 0:
+                case dishes > 0 && detergents >= 0:
                     alert(`Моющее средство закончилось. Осталось ${dishes} тарелок`);
                     break;
                 default:
-                    alert(`Введены некорректные данные`);
+                    alert(`Введены некорректные данные (текст вместо чисел)`);
                     break;
             }
             break;
