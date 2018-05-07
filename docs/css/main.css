@@ -57,7 +57,9 @@
 }
 
 .modalDialogLesson4:target {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     pointer-events: auto;
 }
 
@@ -65,7 +67,6 @@
     width: 200px;
     height: 200px;
     position: relative;
-    margin: 30% auto;
     padding: 25px;
     border-radius: 10px;
     background: #e2e2e2;
