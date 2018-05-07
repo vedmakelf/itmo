@@ -13,20 +13,33 @@ c2=${c2}`);
             //Одномерным массивом задана доска 3 на 3 var area = [null, null, null, null, null, null, null, null, null].Необходимо сформировать игровое поле состоящее из квадратов для крестиков - ноликов  в HTML.При появлении в массиве 0 - ля рисовать нолик, 1 - цы крестик.Пример: [1, null, 0, null, 1, null, null, null, null] на поле 2 - а крестика, и 1 - н нолик.
             location.href = '#openModalLesson4';
             var arr = [1, null, 0, null, 1, null, null, null, null];
-            var field;
-            for (var i = 0; i < arr.length; i++) {
-                field = document.getElementById('playingField-' + i)
+            var arrPlayingField = new Array
+            var arrPlayingFieldRow = new Array();
+            for (var i = 0, j = -1; i < arr.length; i++) {
+                arrPlayingField[i] = document.createElement('div');
+                arrPlayingField[i].idName = 'playingField-' + i;
                 switch (arr[i]) {
                     case 1:
-                        field.innerHTML = 'X';
+                        arrPlayingField[i].innerHTML = 'X';
                         break;
                     case 0:
-                        field.innerHTML = 'O';
+                        arrPlayingField[i].innerHTML = 'O';
                         break;
                     case null:
-                        field.innerHTML = '';
+                        arrPlayingField[i].innerHTML = '';
                         break;
                 }
+                if (i % 3 === 0) {
+                    arrPlayingFieldRow.push(document.createElement('div'));
+                    j++;
+                }
+                arrPlayingFieldRow[j].appendChild(arrPlayingField[i]);
+            }
+            while (document.getElementById('playingField').firstChild) {
+                document.getElementById('playingField').removeChild(document.getElementById('playingField').firstChild);
+            }
+            for (var i = 0; i < arrPlayingFieldRow.length; i++) {
+                document.getElementById('playingField').appendChild(arrPlayingFieldRow[i]);
             }
             break;
         case 3:
@@ -44,7 +57,7 @@ c2=${c2}`);
             //Задан массив - [12, 4, 3, 10, 1, 20].Необходимо отсортировать его в порядке возрастания, при этом не использовать готовый метод sort и методы разобранные на занятии.Снабдите комментариями каждую строку.
             //сортировка вставками
             var arr = [12, 4, 3, 10, 1, 20];
-            for (var i = 1; i < arr.length; i++) { //цикл для перебора элементов
+            for (var i = 1; i < arr.length; i++) { //цикл для перебора
                 for (var j = i; j > 0 && arr[j - 1] > arr[j]; j--) {//цикл для поиска места вставки
                     [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]]; //меняем элементы месятами
                 }
