@@ -27,8 +27,20 @@
 
 //console.log(obj1.name);
 //console.log(obj2.name);
-
-var test = {
-    x: 0,
-    y: function () { console.log(test.x)}
-};
+function test() {
+    var test = {
+        x: 0,
+        y: function () { console.log(test.x) }
+    };
+    var line1 = {
+        x: [],
+        y: [],
+        type: 'scatter'
+    };
+    for (var i = 0; i < 20; i++) {
+        line1.x.push(i);
+        line1.y.push(i);
+    }
+    var data = [line1];
+    Plotly.newPlot('placeholder', data);
+}
