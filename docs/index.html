@@ -13,6 +13,8 @@
     <script src="js/lesson4.js"></script>
     <script src="js/lesson5.js"></script>
     <script src="js/lesson6.js"></script>
+    <script src="js/lesson7.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
 </head>
 <body>
     <header>
@@ -80,28 +82,29 @@
                         <li><a href="javascript:lesson6(3)">Задание 3</a></li>
                     </ul>
                 </li>
+                <li class="lesson7">
+                    Задания к 7 уроку (весь вывод реализован в консоль)
+                    <ul>
+                        <li><a href="javascript:lesson7(1)">Задание 1</a></li>
+                        <li><a href="SpecRunner.html" target="_blank">Задание 2</a></li>
+                        <li><a href="javascript:lesson7(3)">Задание 3</a></li>
+                        <li><a href="javascript:lesson7(4)">Задание 4</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div id="openModalLesson4" class="modalDialogLesson4">
-            <div>
-                <a href="#close" title="Закрыть" class="close">X</a>
-                <div class="playingField" id="playingField">
-                    <!--<div>
-                        <div id="playingField-0"></div>
-                        <div id="playingField-1"></div>
-                        <div id="playingField-2"></div>
-                    </div>
-                    <div>
-                        <div id="playingField-3"></div>
-                        <div id="playingField-4"></div>
-                        <div id="playingField-5"></div>
-                    </div>
-                    <div>
-                        <div id="playingField-6"></div>
-                        <div id="playingField-7"></div>
-                        <div id="playingField-8"></div>
-                    </div>-->
-                </div>
+            <div id="openModalLesson4-div">
+                <a href="#close" title="Закрыть" class="close" onclick="clearOpenModalLesson4()">X</a>
+                <script>
+                    function clearOpenModalLesson4() {
+                        document.getElementById('openModalLesson4-div').style.width = '200px'
+                        document.getElementById('playingField').innerHTML = '';
+                        document.getElementById('chart_div').innerHTML = '';
+                    }
+                </script>
+                <div class="playingField" id="playingField"></div>
+                <div id="chart_div"></div>
             </div>
         </div>
     </main>
