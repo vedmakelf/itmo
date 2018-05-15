@@ -16,7 +16,7 @@
                 data.addColumn('number', 'X');
                 data.addColumn('number', 'f(x)');
 
-                var Fx = {
+                var fx = {
                     min: -5,
                     max: 5,
                     step: 0.01,
@@ -39,7 +39,7 @@
                     }
                 };
 
-                data.addRows(Fx.graph());
+                data.addRows(fx.graph());
 
                 var options = {
                     hAxis: {
