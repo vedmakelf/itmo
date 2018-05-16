@@ -14,6 +14,7 @@
     <script src="js/lesson5.js"></script>
     <script src="js/lesson6.js"></script>
     <script src="js/lesson7.js"></script>
+    <script src="js/lesson8.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
 </head>
 <body>
@@ -91,20 +92,35 @@
                         <li><a href="javascript:lesson7(4)">Задание 4</a></li>
                     </ul>
                 </li>
+                <li class="lesson8">
+                    Задания к 8 уроку (весь вывод реализован в консоль)
+                    <ul>
+                        <li><a href="javascript:lesson8(1)">Задание 1</a></li>
+                        <li><a href="javascript:lesson8(2)">Задание 2</a></li>
+                        <li><a href="javascript:lesson8(3)">Задание 3</a></li>
+                        <li><a href="game.html" target="_blank">Задание 4</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div id="openModalLesson4" class="modalDialogLesson4">
             <div id="openModalLesson4-div">
-                <a href="#close" title="Закрыть" class="close" onclick="clearOpenModalLesson4()">X</a>
+                <a href="#close" title="Закрыть" id="close" class="close" onclick="clearOpenModalLesson4()">X</a>
                 <script>
+                    var idTimerLesson8;
                     function clearOpenModalLesson4() {
-                        document.getElementById('openModalLesson4-div').style.width = '200px'
+                        document.getElementById('openModalLesson4-div').style.width = '200px';
                         document.getElementById('playingField').innerHTML = '';
                         document.getElementById('chart_div').innerHTML = '';
+                        document.getElementById('time').innerHTML = '';
+                        document.getElementById('universal').innerHTML = '';
+                        clearInterval(idTimerLesson8);
                     }
                 </script>
                 <div class="playingField" id="playingField"></div>
                 <div id="chart_div"></div>
+                <div id="time"></div>
+                <div id="universal"></div>
             </div>
         </div>
     </main>
