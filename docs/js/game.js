@@ -6,7 +6,7 @@
 var size = 10;
 var table = document.createElement('table');
 table.style.borderCollapse = 'collapse';
-var rand = new random();
+var rand = random();
 
 for (var i = 0; i < size; i++) {
     var tr = document.createElement('tr');
