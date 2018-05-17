@@ -57,30 +57,30 @@
             break;
         case 2:
             //Подключить стороннюю библиотеку для юнит тестирования.Написать несколько тестов для функции, рассчитывающей y = 1 / x + sqrt(x).
-            function Fx(x) {
+            function fx(x) {
                 return (1 / x + Math.sqrt(x));
             }
             describe("Позитивное тестирование", function () {
                 it(`Тест x = 4`, function () {
-                    let rez = Fx(4);
+                    let rez = fx(4);
                     expect(rez).toBe(2.25);
                 });
                 it(`Тест x = 10`, function () {
-                    let rez = Fx(10);
+                    let rez = fx(10);
                     expect(rez).toBe(3.2622776601683796);
                 });
                 it(`Тест x = 100`, function () {
-                    let rez = Fx(100);
+                    let rez = fx(100);
                     expect(rez).toBe(10.01);
                 });
             });
             describe("Негативное тестирование", function () {
                 it(`Тест x = 0`, function () {
-                    let rez = Fx(0);
+                    let rez = fx(0);
                     expect(rez).toBe(Infinity);
                 });
                 it(`Тест x = -1`, function () {
-                    let rez = Fx(-1);
+                    let rez = fx(-1);
                     expect(rez).toBeNaN();
                 });
             });
