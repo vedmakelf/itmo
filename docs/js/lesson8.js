@@ -4,26 +4,30 @@
             //Создать функцию которая выводит время в html и обновляет значения каждую секунду.Время выводить в формате чч: мм: cc, при этом часы, минуты и секунды отобразить разными цветами. 
 
             location.href = '#openModalLesson4';
-            function pCreate() {
-                var timeHourse = document.createElement('span');
-                timeHourse.id = 'timeHourse';
-                timeHourse.style.color = 'red';
-                var timeMinutes = document.createElement('span');
-                timeMinutes.id = 'timeMinutes';
-                timeMinutes.style.color = 'green';
-                var timeSeconds = document.createElement('span');
-                timeSeconds.id = 'timeSeconds';
-                timeSeconds.style.color = 'orange';
-                var p = document.createElement('p');
-                p.appendChild(timeHourse);
-                p.appendChild(document.createTextNode(':'));
-                p.appendChild(timeMinutes);
-                p.appendChild(document.createTextNode(':'));
-                p.appendChild(timeSeconds);
-                return p;
-            }
-            document.getElementById('time').appendChild(pCreate());
             function clock() {
+                var timeHourse;
+                var timeMinutes;
+                var timeSeconds;
+                function pCreate() {
+                    timeHourse = document.createElement('span');
+                    timeHourse.id = 'timeHourse';
+                    timeHourse.style.color = 'red';
+                    timeMinutes = document.createElement('span');
+                    timeMinutes.id = 'timeMinutes';
+                    timeMinutes.style.color = 'green';
+                    timeSeconds = document.createElement('span');
+                    timeSeconds.id = 'timeSeconds';
+                    timeSeconds.style.color = 'orange';
+                    var p = document.createElement('p');
+                    p.appendChild(timeHourse);
+                    p.appendChild(document.createTextNode(':'));
+                    p.appendChild(timeMinutes);
+                    p.appendChild(document.createTextNode(':'));
+                    p.appendChild(timeSeconds);
+                    return p;
+                }
+                document.getElementById('time').appendChild(pCreate());
+
                 var dateTime;
                 var time = {
                     hours: '',
@@ -41,19 +45,20 @@
                     time.hours = dateTime.getHours() > 9 ? `${dateTime.getHours()}` : `0${dateTime.getHours()}`;
                     time.minutes = dateTime.getMinutes() > 9 ? `${dateTime.getMinutes()}` : `0${dateTime.getMinutes()}`;
                     time.seconds = dateTime.getSeconds() > 9 ? `${dateTime.getSeconds()}` : `0${dateTime.getSeconds()}`;
-                    if (document.getElementById('timeHourse').innerText !== time.hours) {
-                        document.getElementById('timeHourse').style.color = color();
-                        document.getElementById('timeHourse').innerText = time.hours;
+                    if (timeHourse.innerText !== time.hours) {
+                        timeHourse.style.color = color();
+                        timeHourse.innerText = time.hours;
                     }
-                    if (document.getElementById('timeMinutes').innerText !== time.minutes) {
-                        document.getElementById('timeMinutes').style.color = color();
-                        document.getElementById('timeMinutes').innerText = time.minutes;
+                    if (timeMinutes.innerText !== time.minutes) {
+                        timeMinutes.style.color = color();
+                        timeMinutes.innerText = time.minutes;
                     }
-                    if (document.getElementById('timeSeconds').innerText !== time.seconds) {
-                        document.getElementById('timeSeconds').style.color = color();
-                        document.getElementById('timeSeconds').innerText = time.seconds;
+                    if (timeSeconds.innerText !== time.seconds) {
+                        timeSeconds.style.color = color();
+                        timeSeconds.innerText = time.seconds;
                     }
                 };
+
                 timeNow();
                 return timeNow;
             };
