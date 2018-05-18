@@ -46,3 +46,34 @@
 //    Plotly.newPlot('placeholder', data);
 //}
 
+
+var tds = document.getElementsByTagName('td');
+
+for (var i = 0; i < tds.length; i++) {
+    tds[i].onclick = handler;
+}
+
+/**
+ * test
+ * @param {any} e
+ */
+function handler(e) {
+    switch (this.innerText) {
+        case 'c':
+            document.getElementById('inputCalc').value = '';
+            break;
+        case '=':
+            document.getElementById('inputCalc').value = eval(document.getElementById('inputCalc').value);
+            break;
+        default:
+            document.getElementById('inputCalc').value += this.innerText;
+            break;
+    }
+}
+
+/**
+ * события загрузки все верстки
+ */
+window.onload = function () {
+
+}
