@@ -43,7 +43,6 @@
             window.idTime = [];
             document.onkeydown = function (event) {
                 event.preventDefault();
-                console.log(event.key);
                 var reg = /[0-9a-z-=\[\]\\;`',.\/]/;
                 switch (true) {
                     case reg.test(event.key) && event.key.length === 1:
