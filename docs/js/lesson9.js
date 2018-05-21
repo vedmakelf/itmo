@@ -78,6 +78,90 @@
             }
             break
         case 4:
+            ; (function () {
+                function inDec(str, sys) {
+                    var dec = 0;
+                    for (var i = str.length - 1, j = 0; i >= 0; i--, j++) {
+                        dec += hex(str[j]) * Math.pow(sys, i);
+                    }
+                    function hex(str) {
+                        switch (str) {
+                            case 'A': case 'a':
+                                return 10;
+                            case 'B': case 'b':
+                                return 11;
+                            case 'C': case 'c':
+                                return 12;
+                            case 'D': case 'd':
+                                return 13;
+                            case 'E': case 'e':
+                                return 14;
+                            case 'F': case 'f':
+                                return 15;
+                            default:
+                                return parseInt(str);
+                        };
+                    }
+                    return dec;
+                };
+                function outDec(num, sys) {
+                    var arr = new Array();
+                    var buffer = num;
+                    var prevBuffer;
+                    do {
+                        prevBuffer = buffer;
+                        arr.push(hex(buffer % sys));
+                        buffer = Math.floor(buffer / sys);
+                    } while (Math.floor(prevBuffer / sys) !== 0 || Math.floor(prevBuffer / sys) === 1);
+                    function hex(num) {
+                        switch (num) {
+                            case 10:
+                                return 'a';
+                            case 11:
+                                return 'b';
+                            case 12:
+                                return 'c';
+                            case 13:
+                                return 'd';
+                            case 14:
+                                return 'e';
+                            case 15:
+                                return 'f';
+                            default:
+                                return num;
+                        };
+                    };
+                    return arr.reverse().join('');
+                };
+                window.numberSystem = {
+                    dec2bin: function (dec) {
+                        return outDec(dec, 2);
+                    },
+                    dec2oct: function (dec) {
+                        return outDec(dec, 8);
+                    },
+                    dec2hex: function (dec) {
+                        return outDec(dec, 16);
+                    },
+                    bin2dec: function (bin) {
+                        return inDec(bin, 2);
+                    },
+                    oct2dec: function (oct) {
+                        return inDec(oct, 8);
+                    },
+                    hex2dec: function (hex) {
+                        return inDec(hex, 16);
+                    }
+                };
+            }());
+
+            console.log(numberSystem.bin2dec('1010011010'));
+            console.log(numberSystem.oct2dec('755'));
+            console.log(numberSystem.hex2dec('abcdef'));
+
+            console.log(numberSystem.dec2bin(250));
+            console.log(numberSystem.dec2oct(250));
+            console.log(numberSystem.dec2hex(250));
             break;
     }
 }
