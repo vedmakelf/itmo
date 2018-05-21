@@ -15,6 +15,7 @@
     <script src="js/lesson6.js"></script>
     <script src="js/lesson7.js"></script>
     <script src="js/lesson8.js"></script>
+    <script src="js/lesson9.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
 </head>
 <body>
@@ -101,11 +102,20 @@
                         <li><a href="game.html" target="_blank">Задание 4</a></li>
                     </ul>
                 </li>
+                <li class="lesson9">
+                    Задания к 9 уроку (весь вывод реализован в консоль)
+                    <ul>
+                        <li><a href="javascript:lesson9(1)">Задание 1</a></li>
+                        <li><a href="javascript:lesson9(2)">Задание 2</a></li>
+                        <li><a href="javascript:lesson9(3)">Задание 3</a></li>
+                        <li><a href="javascript:lesson9(4)">Задание 4</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div id="openModalLesson4" class="modalDialogLesson4">
             <div id="openModalLesson4-div">
-                <a href="#close" title="Закрыть" id="close" class="close" onclick="clearOpenModalLesson4()">X</a>
+                <a href="#close" title="Закрыть" id="close" class="closeOpenModalLesson4" onclick="clearOpenModalLesson4()">X</a>
                 <script>
                     var idTimerLesson8;
                     function clearOpenModalLesson4() {
@@ -121,6 +131,153 @@
                 <div id="chart_div"></div>
                 <div id="time"></div>
                 <div id="universal"></div>
+            </div>
+        </div>
+        <div id="openModalLesson9" class="modalDialogLesson4">
+            <script>
+                openModalLesson9.onclick = function (e) {
+                    switch (e.target.id) {
+                        case 'closeOpenModalLesson9Task1':
+                            openModalLesson9Task1.style.display = 'none';
+                            e.stopPropagation();
+                            break;
+                        case 'closeOpenModalLesson9Task2':
+                            openModalLesson9Task2.style.display = 'none';
+                            e.stopPropagation();
+                            break;
+                        case 'closeOpenModalLesson9Task3':
+                            openModalLesson9Task3.style.display = 'none';
+                            document.onkeydown = function () {
+
+                            }
+                            write.value = '';
+                            e.stopPropagation();
+                            break;
+                    }
+                }
+            </script>
+            <style>
+                #openModalLesson9Task1 {
+                    width: 450px;
+                    height: 150px;
+                    display: none;
+                    flex-direction: row;
+                }
+
+                #openModalLesson9Task1 > div {
+                    width: 50px;
+                    height: 50px;
+                    border: 1px solid black;
+                    margin: 25px;
+                    cursor: pointer;
+                    background-color: red;
+                }
+
+                #openModalLesson9Task2 {
+                    width: 200px;
+                    height: 100px;
+                    display: none;
+                    flex-direction: row;
+                }
+
+                #openModalLesson9Task2 > button {
+                    width: 150px;
+                    height: 50px;
+                    font-size: 1.5em;
+                }
+
+                #openModalLesson9Task3 {
+                    width: 720px;
+                    height: 500px;
+                    margin: 100px auto;
+                    display: none;
+                    flex-direction: row;
+                }
+            </style>
+            <div id="openModalLesson9Task1">
+                <a href="#close" title="Закрыть" id="closeOpenModalLesson9Task1" class="close">X</a>
+                <div class="green-red"></div>
+                <div class="green-red"></div>
+                <div class="green-red"></div>
+                <div class="green-red"></div>
+            </div>
+            <div id="openModalLesson9Task2">
+                <a href="#close" title="Закрыть" id="closeOpenModalLesson9Task2" class="close">X</a>
+                <button id="buttonLesson9Task2">0</button>
+            </div>
+            <div id="openModalLesson9Task3">
+                <link href="css/keyboard.css" rel="stylesheet" />
+                <a href="#close" title="Закрыть" id="closeOpenModalLesson9Task3" class="close">X</a>
+                <textarea id="write" rows="6" cols="60"></textarea>
+                <ul id="keyboard">
+                    <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                    <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                    <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                    <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                    <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                    <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                    <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                    <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                    <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                    <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                    <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                    <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                    <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                    <li class="delete lastitem"></li>
+
+                    <li class="tab"></li>
+                    <li class="letter">q</li>
+
+                    <li class="letter">w</li>
+                    <li class="letter">e</li>
+
+                    <li class="letter">r</li>
+                    <li class="letter">t</li>
+
+                    <li class="letter">y</li>
+                    <li class="letter">u</li>
+
+                    <li class="letter">i</li>
+                    <li class="letter">o</li>
+
+                    <li class="letter">p</li>
+                    <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                    <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                    <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                    <li class="capslock"></li>
+
+                    <li class="letter">a</li>
+                    <li class="letter">s</li>
+
+                    <li class="letter">d</li>
+                    <li class="letter">f</li>
+
+                    <li class="letter">g</li>
+                    <li class="letter">h</li>
+
+                    <li class="letter">j</li>
+                    <li class="letter">k</li>
+
+                    <li class="letter">l</li>
+                    <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                    <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                    <li class="return lastitem"></li>
+
+                    <li class="left-shift"></li>
+                    <li class="letter">z</li>
+
+                    <li class="letter">x</li>
+                    <li class="letter">c</li>
+                    <li class="letter">v</li>
+                    <li class="letter">b</li>
+                    <li class="letter">n</li>
+                    <li class="letter">m</li>
+                    <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                    <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                    <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                    <li class="right-shift lastitem"></li>
+                    <li class="space lastitem">space</li>
+                </ul>
             </div>
         </div>
     </main>
