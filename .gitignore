@@ -2,3 +2,6 @@ node_modules
 site/.vs
 .vs
 /docs/buffer
+dev.sln
+/dev.sln
+/dev.sln
