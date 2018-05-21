@@ -11,12 +11,11 @@
                         e.target.style.backgroundColor = 'green';
                     } else {
                         e.target.style.backgroundColor = 'red';
-                    }
+                    };
                     e.stopPropagation();
-                }
+                };
             };
             break;
-            //Реализовать счётчик нажатий на кнопку: Дана кнопка внутри неё записана цифра.При клике на кнопку – её значение должно увеличиваться на единицу.
         case 2:
             //Реализовать счётчик нажатий на кнопку: Дана кнопка внутри неё записана цифра.При клике на кнопку – её значение должно увеличиваться на единицу.
             location.href = '#openModalLesson9';
@@ -26,7 +25,7 @@
                 var counter = 0;
                 return function () {
                     return ++counter;
-                }
+                };
             }();
             var buttonLesson9Task2 = document.getElementById('buttonLesson9Task2');
             buttonLesson9Task2.innerText = 0;
@@ -45,17 +44,19 @@
             document.onkeydown = function (event) {
                 event.preventDefault();
                 console.log(event.key);
-                switch (event.key) {
-                    case '`':
-                        keyboardDown(event)
+                var reg = /[0-9a-z-=\[\]\\;`',.\/]/;
+                switch (true) {
+                    case reg.test(event.key) && event.key.length === 1:
+                        keyboardDown(event, event.key)
                         break;
-                    case '1':
-                        keyboardDown(event)
+                    case event.key === " ":
+                        keyboardDown(event, "space")
                         break;
-                }
-                function keyboardDown(event) {
+
+                };
+                function keyboardDown(event, str) {
                     write.value += event.key;
-                    var li = SearchingText(event.key);
+                    var li = SearchingText(str);
                     li.style.backgroundColor = '#3bd6ec73';
                     clearTimeout(idTime[event.keyCode]);
                     idTime[event.keyCode] = setTimeout(function () {
@@ -70,9 +71,9 @@
                             } else {
                                 continue;
                             }
-                        }
-                    }
-                }
+                        };
+                    };
+                };
                 event.stopPropagation();
             }
             break
