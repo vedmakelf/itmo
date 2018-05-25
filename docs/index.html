@@ -16,6 +16,8 @@
     <script src="js/lesson7.js"></script>
     <script src="js/lesson8.js"></script>
     <script src="js/lesson9.js"></script>
+    <script src="js/lesson10.js"></script>
+    <script src="js/lesson11.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
 </head>
 <body>
@@ -111,11 +113,30 @@
                         <li><a href="javascript:lesson9(4)">Задание 4</a></li>
                     </ul>
                 </li>
+                <li class="lesson10">
+                    Задания к 10 уроку (весь вывод реализован в консоль)
+                    <ul>
+                        <li><a href="javascript:lesson10(1)">Задание 1</a></li>
+                        <li><a href="javascript:lesson10(2)">Задание 2</a></li>
+                        <li><a href="javascript:lesson10(3)">Задание 3</a></li>
+                        <li><a href="javascript:lesson10(4)">Задание 4</a></li>
+                        <li><a href="javascript:lesson10(5)">Задание 5</a></li>
+                    </ul>
+                </li>
+                <li class="lesson11">
+                    Задания к 11 уроку (весь вывод реализован в консоль)
+                    <ul>
+                        <li><a href="javascript:lesson11(1)">Задание 1</a></li>
+                        <li><a href="javascript:lesson11(2)">Задание 2</a></li>
+                        <li><a href="javascript:lesson11(3)">Задание 3</a></li>
+                        <li><a href="javascript:lesson11(4)">Задание 4</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div id="openModalLesson4" class="modalDialogLesson4">
             <div id="openModalLesson4-div">
-                <a href="#close" title="Закрыть" id="close" class="closeOpenModalLesson4" onclick="clearOpenModalLesson4()">X</a>
+                <a href="#close" title="Закрыть" id="close" class="close closeOpenModalLesson4" onclick="clearOpenModalLesson4()">X</a>
                 <script>
                     var idTimerLesson8;
                     function clearOpenModalLesson4() {
@@ -164,14 +185,14 @@
                     flex-direction: row;
                 }
 
-                #openModalLesson9Task1 > div {
-                    width: 50px;
-                    height: 50px;
-                    border: 1px solid black;
-                    margin: 25px;
-                    cursor: pointer;
-                    background-color: red;
-                }
+                    #openModalLesson9Task1 > div {
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid black;
+                        margin: 25px;
+                        cursor: pointer;
+                        background-color: red;
+                    }
 
                 #openModalLesson9Task2 {
                     width: 200px;
@@ -180,11 +201,11 @@
                     flex-direction: row;
                 }
 
-                #openModalLesson9Task2 > button {
-                    width: 150px;
-                    height: 50px;
-                    font-size: 1.5em;
-                }
+                    #openModalLesson9Task2 > button {
+                        width: 150px;
+                        height: 50px;
+                        font-size: 1.5em;
+                    }
 
                 #openModalLesson9Task3 {
                     width: 720px;
@@ -278,6 +299,54 @@
                     <li class="right-shift lastitem"></li>
                     <li class="space lastitem">space</li>
                 </ul>
+            </div>
+        </div>
+        <div id="openModalLesson10" class="modalDialogLesson4">
+            <style>
+                #openModalLesson10 > div {
+                    width: 500px;
+                }
+                #openModalLesson10 li {
+                    margin: 0 25px;
+                }
+            </style>
+            <div id="openModalLesson4-div">
+                <a href="#close" title="Закрыть" id="close" class="close closeOpenModalLesson4" onclick="clearOpenModalLesson4()">X</a>
+                <div>
+                    <ol>
+                        Шаблоны объектов:
+                        <li>
+                            File - позволяет получить информацию о файле
+                        </li>
+                        <li>
+                            Error - создает свой объект ошибки для дальнейшего отлова
+                        </li>
+                        <li>
+                            Image - объект изображения, хранить ссылку на изображение и размер
+                        </li>
+                        <li>
+                            FormData - предназначен для хранения кодированых данных, хранит набор пар "ключ-значение"
+                        </li>
+                        <li>
+                            Proxy - служит для перехвата обращений к другим объектам и их модификации
+                        </li>
+                        <li>
+                            Audio - объект позволяющий работать со звуком
+                        </li>
+                        <li>
+                            URL - объект для работы с url
+                        </li>
+                        <li>
+                            Symbol - примитивный тип данных, служить для создания уникальных индентификаторов
+                        </li>
+                        <li>
+                            WeakMap - коллекция для хранения объектов, которая хранит пары ключ-объект, где ключ хранит ссылку на объект
+                        </li>
+                        <li>
+                            RangeError - представялет ошибку ввода
+                        </li>
+                    </ol>
+                </div>
             </div>
         </div>
     </main>
