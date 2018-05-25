@@ -44,7 +44,6 @@
             break;
         case 2:
             {
-                
                 /**
                  * 
                  * @param {string} name
@@ -145,7 +144,6 @@
              * у студента можно узнать как его зовут, на какой курс он ходит и кто препадает курс
              */
             {
-                
                 function Human(name, surname) {
                     this._name = name;
                     this._surname = surname;
@@ -201,42 +199,42 @@
                         return student.join(', ');
                     }
                 };
-                    function Courses(nameCourse, teacher) {
-                        this._nameCourse = nameCourse;
-                        this._teacher = teacher;
-                        this._teacher._addCourse(this);
-                        this.getNameCourse = function myfunction() {
-                            return this._nameCourse;
-                        }
-                        this.getStudents = function () {
-                            return this._teacher.getStudents();
-                        }
-                        this.getTeacher = function () {
-                            return this._teacher.getFullname();
-                        }
-                    };
-                    var student1 = new Student('Вася', 'Пупкин');
-                    var student2 = new Student('Петя', 'Петушков');
-                    var teacher = new Teacher('Михаил', 'Михайлович', [student1, student2]);
-                    var course = new Courses('Програмирование', teacher);
-                    console.log(`Студент 1 - ${student1.getFullname()}`);
-                    console.log(`Студент 1 учиться на курсе - ${student1.getCourse()}`);
-                    console.log(`У студент 1 препадает - ${student1.getTeacher()}`);
-                    console.log(`Учитель - ${teacher.getFullname()}`);
-                    console.log(`Учитель препадает - ${teacher.getCourse()}`);
-                    console.log(`Учитель препадает у - ${teacher.getStudents()}`);
-                    console.log(`Курс - ${course.getNameCourse()}`);
-                    console.log(`Курс препадает - ${course.getTeacher()}`);
-                    console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
-                    console.log(``);
-                    var student3 = new Student('Коля', 'Петушков');
-                    teacher.addStudents([student3]);
-                    console.log(`Учитель - ${teacher.getFullname()}`);
-                    console.log(`Учитель препадает - ${teacher.getCourse()}`);
-                    console.log(`Учитель препадает у - ${teacher.getStudents()}`);
-                    console.log(`Курс - ${course.getNameCourse()}`);
-                    console.log(`Курс препадает - ${course.getTeacher()}`);
-                    console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
+                function Courses(nameCourse, teacher) {
+                    this._nameCourse = nameCourse;
+                    this._teacher = teacher;
+                    this._teacher._addCourse(this);
+                    this.getNameCourse = function myfunction() {
+                        return this._nameCourse;
+                    }
+                    this.getStudents = function () {
+                        return this._teacher.getStudents();
+                    }
+                    this.getTeacher = function () {
+                        return this._teacher.getFullname();
+                    }
+                };
+                var student1 = new Student('Вася', 'Пупкин');
+                var student2 = new Student('Петя', 'Петушков');
+                var teacher = new Teacher('Михаил', 'Михайлович', [student1, student2]);
+                var course = new Courses('Програмирование', teacher);
+                console.log(`Студент 1 - ${student1.getFullname()}`);
+                console.log(`Студент 1 учиться на курсе - ${student1.getCourse()}`);
+                console.log(`У студент 1 препадает - ${student1.getTeacher()}`);
+                console.log(`Учитель - ${teacher.getFullname()}`);
+                console.log(`Учитель препадает - ${teacher.getCourse()}`);
+                console.log(`Учитель препадает у - ${teacher.getStudents()}`);
+                console.log(`Курс - ${course.getNameCourse()}`);
+                console.log(`Курс препадает - ${course.getTeacher()}`);
+                console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
+                console.log(``);
+                var student3 = new Student('Коля', 'Петушков');
+                teacher.addStudents([student3]);
+                console.log(`Учитель - ${teacher.getFullname()}`);
+                console.log(`Учитель препадает - ${teacher.getCourse()}`);
+                console.log(`Учитель препадает у - ${teacher.getStudents()}`);
+                console.log(`Курс - ${course.getNameCourse()}`);
+                console.log(`Курс препадает - ${course.getTeacher()}`);
+                console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
             }
             break;
     }
