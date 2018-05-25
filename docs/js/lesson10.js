@@ -43,47 +43,50 @@
             console.log(`Итог: ${basket1.getTotalSum()}р`);
             break;
         case 2:
-            /**
-             * 
-             * @param {string} name
-             * @param {number} age
-             * @param {string} sex
-             * @param {Array} hobby
-             */
-            function Human(name, age, sex, hobby) {
-                this._name = name;
-                this._age = age;
-                this._sex = sex;
-                this._hobby = hobby;
-                this.toString = function () {
-                    var print = `Человек: ${this._name}. Возраст: ${this._age} ${this._declOfNum(this._age)}. Пол: ${this._sex}. Интересы: ${this._hobby.join(', ')}.`;
-                    return print;
+            {
+                
+                /**
+                 * 
+                 * @param {string} name
+                 * @param {number} age
+                 * @param {string} sex
+                 * @param {Array} hobby
+                 */
+                function Human(name, age, sex, hobby) {
+                    this._name = name;
+                    this._age = age;
+                    this._sex = sex;
+                    this._hobby = hobby;
+                    this.toString = function () {
+                        var print = `Человек: ${this._name}. Возраст: ${this._age} ${this._declOfNum(this._age)}. Пол: ${this._sex}. Интересы: ${this._hobby.join(', ')}.`;
+                        return print;
+                    }
+                    this._declOfNum = function (n) {
+                        var titles = ['год', 'года', 'лет'];
+                        return titles[(n % 10 === 1 && n % 100 !== 11) ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+                    }
                 }
-                this._declOfNum = function (n) {
-                    var titles = ['год', 'года', 'лет'];
-                    return titles[(n % 10 === 1 && n % 100 !== 11) ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+                /**
+                 * 
+                 * @param {string} name
+                 * @param {number} age
+                 * @param {string} sex
+                 * @param {Array} hobby
+                 * @param {string} placeOfStudy
+                 */
+                function Student(name, age, sex, hobby, placeOfStudy) {
+                    Human.call(this, name, age, sex, hobby);
+                    this._placeOfStudy = placeOfStudy;
+                    this.toString = function () {
+                        var print = `Человек: ${this._name}. Возраст: ${this._age} ${this._declOfNum(this._age)}. Пол: ${this._sex}. Интересы: ${this._hobby.join(', ')}. Место обучения: ${this._placeOfStudy}.`;
+                        return print;
+                    }
                 }
+                var human1 = new Human('Вася', 30, 'м', ['лыжи', 'рыбалка']);
+                var student1 = new Student('Кадзуто', 17, 'м', ['VRMMO', 'программирование', 'ИИ'], 'Оксфорд');
+                console.log(human1.toString());
+                console.log(student1.toString());
             }
-            /**
-             * 
-             * @param {string} name
-             * @param {number} age
-             * @param {string} sex
-             * @param {Array} hobby
-             * @param {string} placeOfStudy
-             */
-            function Student(name, age, sex, hobby, placeOfStudy) {
-                Human.call(this, name, age, sex, hobby);
-                this._placeOfStudy = placeOfStudy;
-                this.toString = function () {
-                    var print = `Человек: ${this._name}. Возраст: ${this._age} ${this._declOfNum(this._age)}. Пол: ${this._sex}. Интересы: ${this._hobby.join(', ')}. Место обучения: ${this._placeOfStudy}.`;
-                    return print;
-                }
-            }
-            var human1 = new Human('Вася', 30, 'м', ['лыжи', 'рыбалка']);
-            var student1 = new Student('Кадзуто', 17, 'м', ['VRMMO', 'программирование', 'ИИ'], 'Оксфорд');
-            console.log(human1.toString());
-            console.log(student1.toString());
             break;
         case 3:
             /**
@@ -141,97 +144,100 @@
              * у учителя можно узнать какой курс он препадает, как его зовут и кто его студенты
              * у студента можно узнать как его зовут, на какой курс он ходит и кто препадает курс
              */
-            function Human(name, surname) {
-                this._name = name;
-                this._surname = surname;
-                this.getFullname = function () {
-                    return `${this._name} ${this._surname}`
+            {
+                
+                function Human(name, surname) {
+                    this._name = name;
+                    this._surname = surname;
+                    this.getFullname = function () {
+                        return `${this._name} ${this._surname}`
+                    }
                 }
-            }
-            function Student(name, surname) {
-                Human.call(this, name, surname);
-                this._teacher;
-                this._course;
-                this._addTeacher = function (teacher) {
-                    this._teacher = teacher;
-                }
-                this._addCourse = function (course) {
-                    this._course = course;
-                }
-                this.getCourse = function () {
-                    return this._course.getNameCourse();
-                }
-                this.getTeacher = function () {
-                    return this._teacher.getFullname();
-                }
-            }
-            function Teacher(name, surname, students = []) {
-                Human.call(this, name, surname);
-                this._students = students;
-                for (var i = 0; i < this._students.length; i++) {
-                    this._students[i]._addTeacher(this);
-                }
-                this._course;
-                this._addCourse = function (course) {
-                    this._course = course;
+                function Student(name, surname) {
+                    Human.call(this, name, surname);
+                    this._teacher;
+                    this._course;
+                    this._addTeacher = function (teacher) {
+                        this._teacher = teacher;
+                    }
+                    this._addCourse = function (course) {
+                        this._course = course;
+                    }
+                    this.getCourse = function () {
+                        return this._course.getNameCourse();
+                    }
+                    this.getTeacher = function () {
+                        return this._teacher.getFullname();
+                    }
+                };
+                function Teacher(name, surname, students) {
+                    Human.call(this, name, surname);
+                    students === undefined ? this._students = [] : this._students = students;
                     for (var i = 0; i < this._students.length; i++) {
-                        this._students[i]._addCourse(course);
+                        this._students[i]._addTeacher(this);
                     }
-                }
-                this.addStudents = function (students) {
-                    for (var i = 0; i < students.length; i++) {
-                        this._students.push(students[i]);
-                        students[i]._addTeacher(this);
-                        students[i]._addCourse(this._course);
+                    this._course;
+                    this._addCourse = function (course) {
+                        this._course = course;
+                        for (var i = 0; i < this._students.length; i++) {
+                            this._students[i]._addCourse(course);
+                        }
                     }
-                }
-                this.getCourse = function () {
-                    return this._course.getNameCourse();
-                }
-                this.getStudents = function () {
-                    var student = []
-                    for (var i = 0; i < this._students.length; i++) {
-                        student.push(this._students[i].getFullname());
+                    this.addStudents = function (students) {
+                        for (var i = 0; i < students.length; i++) {
+                            this._students.push(students[i]);
+                            students[i]._addTeacher(this);
+                            students[i]._addCourse(this._course);
+                        }
                     }
-                    return student.join(', ');
-                }
+                    this.getCourse = function () {
+                        return this._course.getNameCourse();
+                    }
+                    this.getStudents = function () {
+                        var student = []
+                        for (var i = 0; i < this._students.length; i++) {
+                            student.push(this._students[i].getFullname());
+                        }
+                        return student.join(', ');
+                    }
+                };
+                    function Courses(nameCourse, teacher) {
+                        this._nameCourse = nameCourse;
+                        this._teacher = teacher;
+                        this._teacher._addCourse(this);
+                        this.getNameCourse = function myfunction() {
+                            return this._nameCourse;
+                        }
+                        this.getStudents = function () {
+                            return this._teacher.getStudents();
+                        }
+                        this.getTeacher = function () {
+                            return this._teacher.getFullname();
+                        }
+                    };
+                    var student1 = new Student('Вася', 'Пупкин');
+                    var student2 = new Student('Петя', 'Петушков');
+                    var teacher = new Teacher('Михаил', 'Михайлович', [student1, student2]);
+                    var course = new Courses('Програмирование', teacher);
+                    console.log(`Студент 1 - ${student1.getFullname()}`);
+                    console.log(`Студент 1 учиться на курсе - ${student1.getCourse()}`);
+                    console.log(`У студент 1 препадает - ${student1.getTeacher()}`);
+                    console.log(`Учитель - ${teacher.getFullname()}`);
+                    console.log(`Учитель препадает - ${teacher.getCourse()}`);
+                    console.log(`Учитель препадает у - ${teacher.getStudents()}`);
+                    console.log(`Курс - ${course.getNameCourse()}`);
+                    console.log(`Курс препадает - ${course.getTeacher()}`);
+                    console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
+                    console.log(``);
+                    var student3 = new Student('Коля', 'Петушков');
+                    teacher.addStudents([student3]);
+                    console.log(`Учитель - ${teacher.getFullname()}`);
+                    console.log(`Учитель препадает - ${teacher.getCourse()}`);
+                    console.log(`Учитель препадает у - ${teacher.getStudents()}`);
+                    console.log(`Курс - ${course.getNameCourse()}`);
+                    console.log(`Курс препадает - ${course.getTeacher()}`);
+                    console.log(`Курс слушают следующие студенты: ${course.getStudents()}`);
             }
-            function Courses(nameCourse, teacher) {
-                this._nameCourse = nameCourse;
-                this._teacher = teacher;
-                this._teacher._addCourse(this);
-                this.getNameCourse = function myfunction() {
-                    return this._nameCourse;
-                }
-                this.getStudents = function () {
-                    return this._teacher.getStudents();
-                }
-                this.getTeacher = function () {
-                    return this._teacher.getFullname();
-                }
-            }
-            var student1 = new Student('Вася', 'Пупкин')
-            var student2 = new Student('Петя', 'Петушков')
-            var teacher = new Teacher('Михаил', 'Михайлович', [student1, student2]);
-            var course = new Courses('Програмирование', teacher);
-            console.log(`Студент 1 - ${student1.getFullname()}`)
-            console.log(`Студент 1 учиться на курсе - ${student1.getCourse()}`)
-            console.log(`У студент 1 препадает - ${student1.getTeacher()}`)
-            console.log(`Учитель - ${teacher.getFullname()}`)
-            console.log(`Учитель препадает - ${teacher.getCourse()}`)
-            console.log(`Учитель препадает у - ${teacher.getStudents()}`)
-            console.log(`Курс - ${course.getNameCourse()}`)
-            console.log(`Курс препадает - ${course.getTeacher()}`)
-            console.log(`Курс слушают следующие студенты: ${course.getStudents()}`)
-            console.log(``)
-            var student3 = new Student('Коля', 'Петушков')
-            teacher.addStudents([student3]);
-            console.log(`Учитель - ${teacher.getFullname()}`)
-            console.log(`Учитель препадает - ${teacher.getCourse()}`)
-            console.log(`Учитель препадает у - ${teacher.getStudents()}`)
-            console.log(`Курс - ${course.getNameCourse()}`)
-            console.log(`Курс препадает - ${course.getTeacher()}`)
-            console.log(`Курс слушают следующие студенты: ${course.getStudents()}`)
             break;
     }
 }
