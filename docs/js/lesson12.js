@@ -11,7 +11,7 @@ for (var i = 0; i < 10; i++) {
         td.style.border = '1px solid black';
         td.id = `${i + 1}-${j + 1}`
         td.style.textAlign = 'center'
-        td.style.color = 'white';
+        td.style.color = 'black';
         td.style.cursor = 'pointer';
         tr.appendChild(td);
     }
@@ -53,7 +53,7 @@ function proverkaX(x, length) {
 function proverka(x, y, length) {
     var result = true;
     var ii = 0;
-    if (10 - x > length) length + 1;
+    if (10 - x > length) length += 1;
     if (x > 1) ii = -1;
     for (var i = ii; i < length; i++) {
         switch (true) {
