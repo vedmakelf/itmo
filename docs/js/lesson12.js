@@ -11,7 +11,7 @@ for (var i = 0; i < 10; i++) {
         td.style.border = '1px solid black';
         td.id = `${i + 1}-${j + 1}`
         td.style.textAlign = 'center'
-        td.style.color = 'black';
+        td.style.color = 'white';
         td.style.cursor = 'pointer';
         tr.appendChild(td);
     }
@@ -29,9 +29,7 @@ for (var i = 0; i < ship.length; i++) {
     var y = 0;
     do {
         var length = ship[i].length;
-        while (10 - x < length) {
-            x = random();
-        }
+        x = proverkaX(x, length);
         y = random();
     } while (!proverka(x, y, ship[i].length));
 
@@ -45,10 +43,19 @@ function random() {
     return Math.floor(Math.random() * 10 + 1);
 }
 
+function proverkaX(x, length) {
+    while (10 - x < length) {
+        x = random();
+    }
+    return x;
+}
+
 function proverka(x, y, length) {
     var result = true;
-
-    for (var i = 0; i < length; i++) {
+    var ii = 0;
+    if (10 - x > length) length + 1;
+    if (x > 1) ii = -1;
+    for (var i = ii; i < length; i++) {
         switch (true) {
             case y === 1:
                 if (document.getElementById(`${y}-${x + i}`).innerHTML === '1' ||
@@ -63,7 +70,7 @@ function proverka(x, y, length) {
                 }
                 break;
             default:
-                if (document.getElementById(`${y}-${x}`).innerHTML === '1' ||
+                if (document.getElementById(`${y}-${x + i}`).innerHTML === '1' ||
                     document.getElementById(`${y + 1}-${x + i}`).innerHTML === '1' ||
                     document.getElementById(`${y - 1}-${x + i}`).innerHTML === '1') {
                     result = false;
@@ -76,13 +83,15 @@ function proverka(x, y, length) {
 }
 
 document.getElementById(`game`).onclick = function (e) {
-    console.log('test');
-    if (e.target.innerHTML === "1") {
-        e.target.style.backgroundColor = 'red';
-        e.target.style.color = 'red';
-    } else {
-        e.target.style.color = 'black';
-        e.target.innerHTML = "X"
+    if (e.target.localName === 'td') {
+
+        if (e.target.innerHTML === "1") {
+            e.target.style.backgroundColor = 'red';
+            e.target.style.color = 'red';
+        } else {
+            e.target.style.color = 'black';
+            e.target.innerHTML = "X"
+        }
     }
 
     e.stopPropagation();
