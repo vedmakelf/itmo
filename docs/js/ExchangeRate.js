@@ -2,8 +2,24 @@
     window.tetris = {
         _widthArena: 20,
         _heightArena: 30,
-        _initializationArena: function () {
+        _idTimeout: [],
+        audio: {
+            themeAudio: function () {
+                var themeAudio = new Audio(`mp3/NewTetris8bit.mp3`);
+                themeAudio.loop = true;
+                return themeAudio;
+            }(),
+            gameOverAudio: function () {
+                var gameOverAudio = new Audio(`mp3/8BitGameOver.mp3`);
+                gameOverAudio.loop = false;
+                return gameOverAudio;
+            }()
+        },
+        initializationArena: function () {
             location.href = '#close';
+            while (tetris._idTimeout.length) {
+                clearTimeout(tetris._idTimeout.pop());
+            }
             var gameArena = document.getElementById('gameArena')
             while (gameArena.firstChild) {
                 gameArena.removeChild(gameArena.firstChild);
@@ -27,19 +43,19 @@
             }
         },
         startGame: function () {
-            this._initializationArena();
+            this.initializationArena();
+            tetris.audio.themeAudio.load();
+            tetris.audio.themeAudio.play();
 
             var widthArena = this._widthArena;
             var heightArena = this._heightArena;
             var startSpeed = 1000;
             var rateSpeed = 1;
-            var figure;
             var startPosition = [0, Math.floor(widthArena / 2) - 1];
             var position = startPosition;
             var prevPosition = startPosition;
-            var figure;
-            var idTimeout;
             var countLvl = 0;
+            var figure = null;
 
             function Figures() {
                 var figures = {
@@ -88,12 +104,12 @@
                     return Math.floor(Math.random() * 7);
                 }
                 var rotation = 0;
-                figures = figures[figureSelection()];
+                var theFigures = figures[figureSelection()];
                 this.figure = function () {
-                    return figures[rotation];
+                    return theFigures[rotation];
                 }
                 this.rotationOfAFigure = function () {
-                    if (rotation + 1 === figures.length) {
+                    if (rotation + 1 === theFigures.length) {
                         rotation = 0;
                     }
                     else {
@@ -143,7 +159,9 @@
 
             function shift(i) {
                 position = [position[0], position[1] + i];
-                draw(figure.figure());
+                if (draw(figure.figure()) === 0) {
+                    position = prevPosition;
+                }
             }
 
             function chekGameOver(figure) {
@@ -183,66 +201,65 @@
                     }
                 }
             }
-
-            window.addEventListener('keydown', function (e) {
-                switch (e.keyCode) {
+            window.onkeydown = function (event) {
+                switch (event.keyCode) {
                     case 37: //left
                         shift(-1);
-                        break;
+                        return false;
                     case 38: //up
                         figure.rotationOfAFigure();
                         position = [position[0], position[1]];
                         draw(figure.figure());
-                        break;
+                        return false;
                     case 39: //right
                         shift(1);
-                        break;
+                        return false;
                     case 40: //down
-                        var code = draw(figure.figure())
-                        switch (code) {
-                            case 0:
-                                clearInterval(idTimeout);
-                                var classNow = document.querySelectorAll('.now');
-                                for (var i = 0; i < classNow.length; i++) {
-                                    classNow[i].classList.remove('now');
-                                    classNow[i].classList.add('on');
-                                }
-                                chekLine();
-                                start();
-                                break;
+                        while (tetris._idTimeout.length) {
+                            clearTimeout(tetris._idTimeout.pop());
                         }
-                        break;
-                    default:
+                        repainting();
+                        return false;
                 }
-                return false;
-            });
+            }
 
             function start() {
                 position = startPosition;
+                prevPosition = startPosition;
                 figure = new Figures();
                 if (chekGameOver(figure.figure())) {
                     location.href = '#modalDialog';
+                    tetris.audio.themeAudio.pause();
+                    tetris.audio.gameOverAudio.play();
+                    while (tetris._idTimeout.length) {
+                        clearTimeout(tetris._idTimeout.pop());
+                    }
                     return;
                 }
-                function repainting() {
-                    var code = draw(figure.figure())
-                    switch (code) {
-                        case 0:
-                            clearInterval(idTimeout);
-                            var classNow = document.querySelectorAll('.now');
-                            for (var i = 0; i < classNow.length; i++) {
-                                classNow[i].classList.remove('now');
-                                classNow[i].classList.add('on');
-                            }
-                            chekLine();
-                            start();
-                            break;
-                        default:
-                            idTimeout = setTimeout(repainting, startSpeed / rateSpeed);
-                            break;
-                    }
-                }
                 repainting();
+            }
+            function repainting() {
+                var code = draw(figure.figure());
+                switch (code) {
+                    case 0:
+                        while (tetris._idTimeout.length) {
+                            clearTimeout(tetris._idTimeout.pop());
+                        }
+                        var classNow = document.querySelectorAll('.now');
+                        for (var i = 0; i < classNow.length; i++) {
+                            classNow[i].classList.remove('now');
+                            classNow[i].classList.add('on');
+                        }
+                        chekLine();
+                        start();
+                        break;
+                    default:
+                        while (tetris._idTimeout.length) {
+                            clearTimeout(tetris._idTimeout.pop());
+                        }
+                        tetris._idTimeout.push(setTimeout(repainting, startSpeed / rateSpeed));
+                        break;
+                }
             }
 
             start();
@@ -250,4 +267,4 @@
     }
 }());
 
-tetris.startGame();
+tetris.initializationArena();
