@@ -18,11 +18,12 @@
                         var x = event.target.textContent;
                         if (event.target.textContent === '🔊') {
                             event.target.textContent = '🔇';
-                            tetris.audio.themeAudio.pause()
+                            tetris.audio.themeAudio.volume = 0;
+                            tetris.audio.gameOverAudio.volume = 0;
                         } else {
                             event.target.textContent = '🔊';
-                            tetris.audio.themeAudio.load();
-                            tetris.audio.themeAudio.play();
+                            tetris.audio.themeAudio.volume = 1;
+                            tetris.audio.gameOverAudio.volume = 1;
                         }
                     }
                 </script>
