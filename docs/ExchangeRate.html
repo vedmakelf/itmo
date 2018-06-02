@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Курсовая работа</title>
+    <link href="css/ExchangeRate.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        <div id="gameArena">
+        </div>
+        <div id="information">
+            <div id="sound" onclick="soundOfOn(event)">
+                <script>
+                    function soundOfOn(event) {
+                        var x = event.target.textContent;
+                        if (event.target.textContent === '🔊') {
+                            event.target.textContent = '🔇';
+                            tetris.audio.themeAudio.volume = 0;
+                            tetris.audio.gameOverAudio.volume = 0;
+                        } else {
+                            event.target.textContent = '🔊';
+                            tetris.audio.themeAudio.volume = 1;
+                            tetris.audio.gameOverAudio.volume = 1;
+                        }
+                    }
+                </script>
+                <p>🔊</p>
+            </div>
+            <button onclick="startGame(event)">Начать игру</button>
+            <script>
+                function startGame(event) {
+                    tetris.startGame();
+                    event.target.textContent = 'Начать заново';
+                }
+            </script>
+            <div>
+                <p>Score: <span id="score">0</span></p>
+                <p>Lvl: <span id="lvl">1</span></p>
+            </div>
+            <div id="control">
+                <ul>
+                    Управление:
+                    <li>Up - перевернуть фигуру</li>
+                    <li>Down - ускорить</li>
+                    <li>Left - сдвинуть в лево</li>
+                    <li>Right - сдвинуть в право</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div id="modalDialog" class="modalDialog">
+        <div>
+            <a href="#close" title="Закрыть" id="close" class="close">X</a>
+            <h1>GAME OVER</h1>
+            <button onclick="tetris.startGame()">Начать заново</button>
+        </div>
+    </div>
+    <script src="js/ExchangeRate.js"></script>
+</body>
+</html>
