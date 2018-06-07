@@ -5,3 +5,7 @@ site/.vs
 dev.sln
 /dev.sln
 /dev.sln
+/nodejs/bin
+/nodejs/obj
+/nodejs/nodejs.njsproj
+/nodejs/package.json
