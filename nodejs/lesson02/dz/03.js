@@ -41,10 +41,10 @@ for (var i = 0; i < str.length; i++) {
     out2 += `${str[i] ** 3} `;
 }
 
-fs.writeFileSync(fileOut1, out1, (err) => {
+fs.writeFile(fileOut1, out1, (err) => {
     if (err) throw err;
 });
 
-fs.writeFileSync(fileOut2, out2, (err) => {
+fs.writeFile(fileOut2, out2, (err) => {
     if (err) throw err;
 });
