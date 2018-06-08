@@ -4,6 +4,13 @@ var fileData = 'data.txt';
 var fileOut1 = 'out1.txt';
 var fileOut2 = 'out2.txt';
 
+/**
+ * создание и наполнение файла data.txt
+ * @param {string} fileData путь к файлу
+ * @param {number} length количество чисел
+ * @param {number} min минимальное число
+ * @param {number} max максимальное число
+ */
 function creatFileData(fileData, length, min, max) {
 
     var str = "";
