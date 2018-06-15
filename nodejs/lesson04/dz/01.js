@@ -92,9 +92,9 @@ http.createServer((request, response) => {
                                                     obj['status_message'] = buffer[2].toString().trim();
                                                     break;
                                                 case 4:
-                                                    obj['protocol'] = buffer[0];
-                                                    obj['status_code'] = buffer[1];
-                                                    obj['status_message'] = `${buffer[2]} ${buffer[3]}`;
+                                                    obj['protocol'] = buffer[0].toString().trim();
+                                                    obj['status_code'] = buffer[1].toString().trim();
+                                                    obj['status_message'] = `${buffer[2]} ${buffer[3]}`.toString().trim();
                                                     break;
                                                 default:
                                                     break;
