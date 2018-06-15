@@ -24,7 +24,7 @@ http.createServer((request, response) => {
     switch (request.method) {
         case 'GET':
             switch (extname) {
-                case ".gif": case ".jpg": case ".ico":
+                case ".gif": case ".jpg": //case ".ico":
                     var img = fs.readFileSync('./' + pathname);
                     response.writeHead(200, { 'Content-Type': mimeType });
                     response.end(img, 'binary');
@@ -103,8 +103,8 @@ http.createServer((request, response) => {
                                     }
                                     break;
                                 default:
-                                    var buffer = arr[i].split(':');
-                                    if (buffer.length > 1) {
+                                    var buffer = arr[i].split(': ');
+                                    if (buffer.length === 2) {
                                         obj[buffer[0]] = buffer[1].toString().trim();
                                     }
                                     break;

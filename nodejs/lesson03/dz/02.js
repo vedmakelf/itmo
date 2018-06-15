@@ -8,14 +8,14 @@ http.createServer((request, response) => {
         case 'camel_to_snake':
             response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
             for (key in query) {
-                response.write(camel_to_snake(query[key].replace(/[']/g, "")));
+                response.write(camel_to_snake(query[key].replace(/['"]/g, "")));
             }
             response.end();
             break;
         case 'snake_to_camel':
             response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
             for (key in query) {
-                response.write(snake_to_camel(query[key].replace(/[']/g, "")));
+                response.write(snake_to_camel(query[key].replace(/['"]/g, "")));
             }
             response.end();
             break;
