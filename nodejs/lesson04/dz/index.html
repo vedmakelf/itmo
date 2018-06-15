@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <main>
+        <input type="file" id="myFile" name="myFile" />
+        <div id="log">Прогресс загрузки</div>
+    </main>
+    <script>
+        document.getElementById('myFile').onchange = function (e) {
+            var file = e.target.files[0];
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', file.name, true);
+            xhr.setRequestHeader(`Content-Type`, `application/x-www-form-urlencoded; charset=UTF-8`);
+            xhr.setRequestHeader(`Content-Disposition`, `form-data; name = myFile; filename = ${file.name}`);
+            xhr.upload.onprogress = function (event) {
+                document.getElementById('log').textContent = `${((event.loaded / event.total) * 100).toFixed(2)}%`;
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState != 4) return;
+                if (xhr.status != 200) {
+                    document.getElementById('log').textContent = 'error';
+                } else {
+                    document.getElementById('log').textContent = 'success';
+                }
+            }
+            xhr.send(file);
+        }
+    </script>
+</body>
+</html>
