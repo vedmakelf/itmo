@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <form action="/user/registration" method="post">
+            <input type="email" placeholder="email" name="email" value="" required/>
+            <input type="text" placeholder="login" name="login" value="" required/>
+            <input type="password" placeholder="password" name="password" value="" required/>
+            <input type="submit" value="registration" />
+        </form>
+    </main>
+</body>
+</html>
