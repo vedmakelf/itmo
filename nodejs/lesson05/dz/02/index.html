@@ -5,30 +5,51 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        input {
+            margin: 5px;
+        }
     </style>
 </head>
 <body>
     <main>
+        <form action="/scripts/test_task/api_sample" method="post">
+            <input type="text" placeholder="name" name="name" value="" required/>
+            <input type="tel" name="phone" placeholder="phone" value="" required/>
+            <input type="hidden" name="method" value="send_lead" />
+            <input type="hidden" name="ip" id="ip" value="" />
+            <input type="hidden" name="key" id="key" value="" />
+            <input type="submit" value="registration" id="submit" disabled />
+        </form>
     </main>
     <script>
-        function test() {
-            var x = {
+        var apiSimple = {
+            key: null,
+            keyGet: function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/scripts/test_task/api_sample', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send("method=" + encodeURIComponent('get_api_key'));
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.status != 200) {
+                    } else {
+                        var data = JSON.parse(xhr.responseText);
+                        this.key = data['key'];
+                        document.getElementById('submit').disabled = false;
 
-            };
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://somesite.ru/scripts/test_task/api_sample', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send("method=" + encodeURIComponent('get_api_key'));
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState != 4) return;
-                if (xhr.status != 200) {
-                } else {
-                    var x = xhr.responseText;
-                }
+                        document.getElementById('ip').value = data['ip']
+                        document.getElementById('key').value = data['key'];
+                    }
+                };
             }
-        }
-        test();
+        };
+        apiSimple.keyGet();
     </script>
 </body>
 </html>
