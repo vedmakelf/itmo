@@ -1,16 +1,15 @@
 ﻿class DataList {
     /**
-     * иницилизация списка, +1 перегрузка принимает массив числе 
-     * @param {Array} arr массив чисел
+     * иницилизация списка, принимает набор чисел в качестве параметров
      */
-    constructor(arr = []) {
+    constructor() {
         this._value = null;
         this._next = null;
         this._length = 0;
 
-        if (arr.length !== 0) {
-            for (var i = 0; i < arr.length; i++) {
-                this.add(arr[i]);
+        if (arguments.length !== 0) {
+            for (var i = 0; i < arguments.length; i++) {
+                this.add(arguments[i]);
             }
         }
     }
@@ -171,6 +170,36 @@
         return this._length;
     }
 
+    /**
+     * возвращает true если список не пустой, если пустой возвращает false
+     */
+    isEmpty(){
+        if (this._length === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    [Symbol.iterator]() {
+        let id = 0;
+        var obj = this;
+        return {
+            next() {
+                if (id < obj._length) {
+                return {
+                    value: obj.get(id++),
+                    done: false
+                }
+                } else {
+                    return {
+                        done: true
+                    }
+                }
+            }
+        }
+    }
+
     _lastNext() {
         var next = this;
         while (next._next) {
@@ -181,7 +210,7 @@
 }
 
 
-var list = new DataList([5, 4]);
+var list = new DataList(5, 4);
 console.dir(list);
 list.add(5);
 console.dir(list);
@@ -196,3 +225,11 @@ console.dir(list.contains(4));
 console.dir(list.len());
 list.clear()
 console.dir(list);
+
+var list1 = new DataList(3, 5, 4);
+console.dir(`list isEmpty: ${list.isEmpty()}`);
+console.dir(`list1 isEmpty: ${list1.isEmpty()}`);
+
+for (let num of list1) {
+    console.log(num);
+}
