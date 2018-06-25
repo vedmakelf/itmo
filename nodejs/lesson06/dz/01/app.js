@@ -60,7 +60,7 @@
      */
     get(index) {
         if (index >= this._length) {
-            throw new error('Индекс вне диапозона списка');
+            throw new Error('Индекс вне диапозона списка');
         } else {
             var next = this;
             for (var i = 0; i < index; i++) {
@@ -171,13 +171,13 @@
     }
 
     /**
-     * возвращает true если список не пустой, если пустой возвращает false
+     * возвращает false если список не пустой, если пустой возвращает true
      */
     isEmpty(){
         if (this._length === 0) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
