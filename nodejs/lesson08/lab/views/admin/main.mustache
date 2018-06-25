@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            <p>Профиль: {{login}}</p>
+            <p>Email: {{Email}}</p>
+            <p>Пароль: {{Password}}</p>
+        </div>
+        <form action="/admin/editUser" id="editUser" method="post" onsubmit="editUser(login.value, email.value, password.value, 'edit'); return false;">
+            <p>Редактирование профиля</p>
+            <input type="text" name="login" value="" placeholder="новый логин" required />
+            <input type="email" name="email" value="" placeholder="новый email" required />
+            <input type="password" name="password" value="" placeholder="новый пароль" required />
+            <input type="submit" name="save" value="Сохранить" />
+        </form>
+        <form action="/admin/addUser" id="addUser" method="post" onsubmit="editUser(login.value, email.value, password.value, 'add'); return false;">
+            <p>Добавление профиля</p>
+            <input type="text" name="login" value="" placeholder="новый логин" required />
+            <input type="email" name="email" value="" placeholder="новый email" required />
+            <input type="password" name="password" value="" placeholder="новый пароль" required />
+            <input type="submit" name="add" value="Добавить" />
+        </form>
+        <form action="/admin/clear" method="post">
+            <input type="submit" name="clear" value="Выход" />
+        </form>
+    </main>
+    <script>
+        function editUser(login, email, password, type) {
+            var xhr = new XMLHttpRequest();
+            switch (type) {
+                case 'edit':
+                    xhr.open('POST', '/admin/editUser', true);
+                    break;
+                case 'add':
+                    xhr.open('POST', '/admin/addUser', true);
+                    break;
+                default:
+            }
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(`login=${login}&password=${password}&email=${email}`);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState != 4) return;
+                if (xhr.status != 200) {
+                } else {
+                    var data = JSON.parse(xhr.responseText);
+                    if (!data.edit) {
+                        //document.getElementById('error').textContent = 'Неверный логин или пароль';
+                    } else {
+                        var p = document.createElement('p');
+                        p.textContent = 'Пользователь добавлен';
+                        document.getElementById('addUser').appendChild(p);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
