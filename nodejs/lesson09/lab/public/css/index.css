@@ -1,0 +1,43 @@
+
+#site {
+    min-width: 230px;
+}
+
+body {
+    min-width: 230px;
+    margin: 0 100px 0 100px;
+}
+
+/* main */
+
+main {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content:center;
+    height: 100vh;
+}
+
+#x-o {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+    justify-content:center; */
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border: solid 2px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#controller {
+    padding: 0 0 0 20px;
+}
+
+#info {
+    width: 200px;
+}
