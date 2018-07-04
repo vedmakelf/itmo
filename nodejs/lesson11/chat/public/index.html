@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <main>
+        <div id="login">
+            <p>Ник</p>
+            <input type="text" name="" id="name">
+        </div>
+        <div id="lol">
+            <textarea name="" id="textarea" cols="70" rows="30" readonly></textarea>
+            <div>
+                <p>online</p>
+                <textarea name="" id="online" cols="30" rows="26" readonly></textarea>
+            </div>
+        </div>
+        <form method="POST" id="mes" onsubmit="news(message.value); return false;">
+            <textarea name="message" id="mess" cols="70" rows="3" wrap="hard"></textarea>
+            <input type="submit" value="Отправить">
+        </form>
+    </main>
+    <script src="./js/index.js"></script>
+</body>
+</html>

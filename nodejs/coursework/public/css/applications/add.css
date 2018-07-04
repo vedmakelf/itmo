@@ -1,0 +1,98 @@
+﻿/*
+    main
+*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  min-width: 680px;
+  max-width: 768px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+form p {
+  /* flex-grow: 1; */
+  min-width: 130px;
+  height: 20px;
+  margin: 5px;
+}
+
+form input {
+  margin: 5px;
+  /* flex-grow: 1; */
+  height: 20px;
+}
+
+form select {
+  margin: 5px;
+  /* flex-grow: 1; */
+  height: 25px;
+}
+
+form textarea {
+  margin: 5px;
+  flex-grow: 1;
+  height: 45px;
+  resize: none;
+}
+
+.multiline {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  height: auto;
+}
+
+.multiline div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.FIO {
+  flex-grow: 1;
+}
+
+.long {
+  flex-grow: 1;
+}
+
+/* .multiline p {
+  min-width: 50px;
+} */
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #fff;
+  overflow: auto;
+}
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #f0f0f0;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399ff;
+}
+.autocomplete-group {
+  padding: 2px 5px;
+}
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000;
+}

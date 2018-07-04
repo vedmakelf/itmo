@@ -1,0 +1,28 @@
+#site {
+  min-width: 230px;
+}
+
+body {
+  min-width: 230px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.div-margins {
+  max-width: 1140px;
+  margin: auto;
+}
+
+.clear::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 1190px) {
+  body {
+    margin: 0 50px 0 50px;
+  }
+}

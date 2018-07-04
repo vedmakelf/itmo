@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Создание заявки</title>
+    <link rel="stylesheet" href="/css/applications/add.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/common.css">
+
+    <script src="/js/date.format.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.autocomplete.js"></script>
+    <script src="/js/applications/add.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    <main>
+        <form action="/applications/add" method="post" id="addApplication" enctype="multipart/form-data">
+            <div class="form multiline">
+                <div>
+                    <p>№ заявки</p>
+                    <input type="number" name="applicationNo" required/>
+                </div>
+                <div>
+                    <p>Состояние</p>
+                    <select name="condition">
+                        <option selected value="На рассмотрение">На рассмотрение</option>
+                        <option value="В работе">В работе</option>
+                        <option value="Выполнено">Выполнено</option>
+                        <option value="Отклонено">Отклонено</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Примечание</p>
+                    <textarea name="note" id=""></textarea>
+                </div>
+            </div>
+            <div class="form multiline">
+                <p>От кого:</p>
+                <div>
+                    <p>ФИО</p>
+                    <input class="FIO" type="text" name="fromWhomFIO" id="fromWhom" />
+                </div>
+                <div>
+                    <p>Подразделение</p>
+                    <input class="long" type="text" name="subdivision" id="fromWhomPosition" />
+                </div>
+            </div>
+            <div class="form">
+                <p>Примечание</p>
+                <textarea name="note" cols="2"></textarea>
+            </div>
+            <div class="form multiline">
+                <p>Для кого:</p>
+                <div>
+                    <p>ФИО</p>
+                    <input class="FIO" type="text" name="forWhomFIO" id="forWhom" />
+                </div>
+                <div>
+                    <p>Должность</p>
+                    <input class="long" type="text" name="position" id="forWhomPosition" />
+                </div>
+                <div>
+                    <p>Помещение</p>
+                    <input class="long" type="text" name="room" />
+                </div>
+            </div>
+            <div class="form">
+                <p>Дата отправления</p>
+                <input type="date" name="departureDate">
+                <p>Дата регистрации</p>
+                <input type="date" name="dateOfRegistration" id="nowDate" :value=nowDate()>
+                <script>
+                    new Vue({
+                        el: "#nowDate",
+                        data: {
+                            nowDate: () => {
+                                var date = new Date();
+                                return date.format('yyyy-mm-dd');
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div class="form">
+                <p>Скан заявки</p>
+                <input type="file" name="scanApplication">
+            </div>
+            <div>
+                <input type="submit" value="Сохранить">
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
