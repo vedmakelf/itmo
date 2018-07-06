@@ -21,6 +21,12 @@ router.use("/fio", function(req, res, next) {
         );
       } else {
         console.error(err.message);
+        res.send(
+          JSON.stringify({
+            query: "/searech/fio",
+            suggestions: null
+          })
+        );
       }
     }
   );

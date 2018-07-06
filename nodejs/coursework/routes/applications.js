@@ -23,16 +23,20 @@ FROM mysite.scanapplication
 where idscanapplication = ${data.item}`,
       (err, rows, fields) => {
         if (!err) {
-          if (rows.lenght !== 0) {
+          if (rows.length !== 0) {
             res.writeHead(200, {
               "Content-Type": "application/pdf",
               "Content-Disposition": "inline",
               "Content-Length": rows[0].data.length
             });
             res.end(rows[0].data);
+          } else {
+            console.error("get[/file]: Запрос вернул 0 строк.");
+            next();
           }
         } else {
           console.error(err.message);
+          next();
         }
       }
     );
@@ -140,7 +144,7 @@ left join mysite.scanapplication on scanapplication.idscanApplication = applicat
 where applications.idapplications = ${data.item}`,
       (err, rows, fields) => {
         if (!err) {
-          if (rows.lenght !== 0) {
+          if (rows.length !== 0) {
             res.render("applications/edit", {
               options: [
                 {
@@ -188,7 +192,13 @@ where applications.idapplications = ${data.item}`,
                 href: `file?item=${rows[0].idscanapplication}`
               }
             });
+          } else {
+            console.error("get[/edit]: Запрос вернул 0 строк.");
+            next();
           }
+        } else {
+          console.error(err);
+          next();
         }
       }
     );

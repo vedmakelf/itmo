@@ -40,7 +40,8 @@ app.use(function(req, res, next) {
       res.status(404).send(data);
     } else {
       console.error(err);
-      res.send(404);
+      // res.send(404);
+      next();
     }
   });
 });
