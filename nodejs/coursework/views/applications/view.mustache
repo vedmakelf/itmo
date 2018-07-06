@@ -26,30 +26,30 @@
                 <option value="applicationNo" selected>№ заявки</option>
                 <option value="condition">Состояние</option>
                 <option disabled value="">От кого</option>
-                <option value="fromWhomFIO">ФИО</option>
-                <option value="fromWhomPosition">Подразделение</option>
+                <option value="fromWhomFIO">&nbsp;ФИО</option>
+                <option value="fromWhomPosition">&nbsp;Подразделение</option>
                 <option disabled value="">Для кого</option>
-                <option value="forWhomFIO">ФИО</option>
-                <option value="forWhomPosition">Подразделение</option>
+                <option value="forWhomFIO">&nbsp;ФИО</option>
+                <option value="forWhomPosition">&nbsp;Подразделение</option>
             </select>
             <input type="text" id="searchText" onkeyup="search()" placeholder="Поиск..">
         </div>
         <table id="application" border="1" width="100%" cellpadding="5">
-            <tr>
+            <tr class="cap">
                 <td rowspan="2">№ заявки</td>
                 <td rowspan="2">Состояние</td>
                 <td colspan="2">От кого</td>
                 <td colspan="2">Для кого</td>
                 <td rowspan="2">Скан заявки</td>
             </tr>
-            <tr>
+            <tr class="cap">
                 <td>ФИО</td>
                 <td>Подразделение</td>
                 <td>ФИО</td>
                 <td>Должность</td>
             </tr>
             {{#stooges}}
-            <tr>
+            <tr class="info">
                 <td>
                     <a href="edit?item={{idapplications}}">{{applicationNo}}</a>
                 </td>

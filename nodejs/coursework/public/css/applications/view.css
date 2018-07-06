@@ -30,3 +30,7 @@ main > table {
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
+
+.cap {
+  background-color: rgba(146, 146, 146, 0.192);
+}
