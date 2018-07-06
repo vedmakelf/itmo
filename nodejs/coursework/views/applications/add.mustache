@@ -52,11 +52,6 @@
                     <input class="long" type="text" name="subdivision" id="fromWhomPosition" />
                 </div>
             </div>
-            {{!
-            <div class="form">
-                <p>Примечание</p>
-                <textarea name="note" cols="2"></textarea>
-            </div> }}
             <div class="form multiline">
                 <p>Для кого:</p>
                 <div>
@@ -90,8 +85,9 @@
 
     <div id="openModal" class="modalDialog">
         <div>
-            <a href="#close" title="Закрыть" class="close">X</a>
+            <a href="/" title="Закрыть" class="close">X</a>
             <p id="info"></p>
+            <button onclick="locationEdit()">Перейти к заявки</button>
         </div>
     </div>
 </body>

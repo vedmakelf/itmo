@@ -62,15 +62,19 @@ function addApplication(data) {
     data: formData,
     success: response => {
       if (response.result) {
+        idApplications = response.info.insertId;
         location.href = "#openModal";
         document.getElementById(
           "info"
-        ).textContent = `Заявка зарегистрирована под № ${
-          response.info.insertId
-        }.`;
+        ).textContent = `Заявка зарегистрированаю.`;
       } else {
       }
     },
     error: response => {}
   });
+}
+var idApplications = null;
+
+function locationEdit() {
+  location.href = `/applications/edit?item=${idApplications}`;
 }
