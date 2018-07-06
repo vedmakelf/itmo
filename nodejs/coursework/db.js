@@ -20,3 +20,9 @@ router.insert = (query, values, calback) => {
   connect.query(query, values, calback);
   connect.end();
 };
+
+router.update = (query, values, calback) => {
+  var connect = mysql.createConnection(connection);
+  connect.query(query, values, calback);
+  connect.end();
+};

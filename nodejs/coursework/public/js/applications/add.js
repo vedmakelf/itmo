@@ -18,15 +18,29 @@ onload = () => {
   //   minLength: 2
   // });
 
+  new Vue({
+    el: "#nowDate",
+    data: {
+      nowDate: () => {
+        var date = new Date();
+        return date.format("yyyy-mm-dd");
+      }
+    }
+  });
+
   $(".FIO").autocomplete({
     type: "POST",
     serviceUrl: "/searech/fio",
     onSelect: function(suggestion) {
+      var arr = suggestion.data.split(",");
       switch (this.id) {
         case "fromWhom":
+          document.getElementById("fromWhomPosition").value = arr[2].split(
+            "/"
+          )[1];
           break;
         case "forWhom":
-          document.getElementById("forWhomPosition").value = suggestion.data;
+          document.getElementById("forWhomPosition").value = arr[0];
           break;
         default:
           break;
@@ -34,3 +48,29 @@ onload = () => {
     }
   });
 };
+
+function addApplication(data) {
+  var $that = $(data),
+    formData = new FormData($that.get(0));
+  $.ajax({
+    type: "POST",
+    url: "/applications/add", // async: true,
+    processData: false,
+    contentType: false,
+    cache: false,
+    dataType: "json",
+    data: formData,
+    success: response => {
+      if (response.result) {
+        location.href = "#openModal";
+        document.getElementById(
+          "info"
+        ).textContent = `Заявка зарегистрирована под № ${
+          response.info.insertId
+        }.`;
+      } else {
+      }
+    },
+    error: response => {}
+  });
+}

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Создание заявки</title>
+    <link rel="stylesheet" href="/css/applications/view.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="shortcut icon" href="/img/favicon-16x16.png" type="image/png" sizes="16x16">
+
+    <script src="/js/date.format.js"></script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.autocomplete.js"></script>
+    <script src="/js/applications/view.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    <main>
+        <div id="search">
+            <select name="collumn" id="collumn">
+                <option value="applicationNo" selected>№ заявки</option>
+                <option value="condition">Состояние</option>
+                <option disabled value="">От кого</option>
+                <option value="fromWhomFIO">ФИО</option>
+                <option value="fromWhomPosition">Подразделение</option>
+                <option disabled value="">Для кого</option>
+                <option value="forWhomFIO">ФИО</option>
+                <option value="forWhomPosition">Подразделение</option>
+            </select>
+            <input type="text" id="searchText" onkeyup="search()" placeholder="Поиск..">
+        </div>
+        <table id="application" border="1" width="100%" cellpadding="5">
+            <tr>
+                <td rowspan="2">№ заявки</td>
+                <td rowspan="2">Состояние</td>
+                <td colspan="2">От кого</td>
+                <td colspan="2">Для кого</td>
+                <td rowspan="2">Скан заявки</td>
+            </tr>
+            <tr>
+                <td>ФИО</td>
+                <td>Подразделение</td>
+                <td>ФИО</td>
+                <td>Должность</td>
+            </tr>
+            {{#stooges}}
+            <tr>
+                <td>
+                    <a href="edit?item={{idapplications}}">{{applicationNo}}</a>
+                </td>
+                <td>{{condition}}</td>
+                <td>{{fromWhomFIO}}</td>
+                <td>{{subdivision}}</td>
+                <td>{{forWhomFIO}}</td>
+                <td>{{position}}</td>
+                <td>
+                    <a href="{{href}}">{{name}}</a>
+                </td>
+            </tr>
+            {{/stooges}}
+        </table>
+    </main>
+</body>
+
+</html>

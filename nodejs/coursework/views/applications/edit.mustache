@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Создание заявки</title>
-    <link rel="stylesheet" href="/css/applications/add.css">
+    <link rel="stylesheet" href="/css/applications/edit.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="shortcut icon" href="/img/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -15,72 +15,79 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/js/jquery.autocomplete.js"></script>
-    <script src="/js/applications/add.js"></script>
+    <script src="/js/applications/edit.js"></script>
 </head>
 
 <body>
     {{>header}}
     <main>
-        <form method="post" id="addApplication" enctype="multipart/form-data" onsubmit="addApplication(this); return false;">
+        <form method="post" id="editApplication" enctype="multipart/form-data" onsubmit="editApplication(this); return false;">
             <div class="form multiline">
+                <input type="hidden" name="idapplications" value="{{row.idapplications}}">
                 <div>
                     <p>№ заявки</p>
-                    <input type="text" name="applicationNo" required/>
+                    <input type="text" name="applicationNo" value="{{row.applicationNo}}" required/>
                 </div>
                 <div>
                     <p>Состояние</p>
-                    <select name="condition">
-                        <option selected value="На рассмотрение">На рассмотрение</option>
+                    <!-- <select name="condition">
+                        <option value="На рассмотрение">На рассмотрение</option>
                         <option value="В работе">В работе</option>
                         <option value="Выполнено">Выполнено</option>
                         <option value="Отклонено">Отклонено</option>
+                    </select> -->
+                    <select name="condition">
+                        {{#options}}
+                        <option value="{{value}}" {{#selected}}selected="selected" {{/selected}}>{{text}}</option>
+                        {{/options}}
                     </select>
                 </div>
                 <div>
                     <p>Примечание</p>
-                    <textarea name="note" id=""></textarea>
+                    <textarea name="note">{{row.note}}</textarea>
                 </div>
             </div>
             <div class="form multiline">
                 <p>От кого:</p>
                 <div>
                     <p>ФИО</p>
-                    <input class="FIO" type="text" name="fromWhomFIO" id="fromWhom" />
+                    <input class="FIO" type="text" name="fromWhomFIO" id="fromWhom" value="{{row.fromWhomFIO}}" />
                 </div>
                 <div>
                     <p>Подразделение</p>
-                    <input class="long" type="text" name="subdivision" id="fromWhomPosition" />
+                    <input class="long" type="text" name="subdivision" id="fromWhomPosition" value="{{row.subdivision}}" />
                 </div>
             </div>
-            {{!
-            <div class="form">
+            <!-- <div class="form">
                 <p>Примечание</p>
                 <textarea name="note" cols="2"></textarea>
-            </div> }}
+            </div> -->
             <div class="form multiline">
                 <p>Для кого:</p>
                 <div>
                     <p>ФИО</p>
-                    <input class="FIO" type="text" name="forWhomFIO" id="forWhom" />
+                    <input class="FIO" type="text" name="forWhomFIO" id="forWhom" value="{{row.forWhomFIO}}" />
                 </div>
                 <div>
                     <p>Должность</p>
-                    <input class="long" type="text" name="position" id="forWhomPosition" />
+                    <input class="long" type="text" name="position" id="forWhomPosition" value="{{row.position}}" />
                 </div>
                 <div>
                     <p>Помещение</p>
-                    <input class="long" type="text" name="room" />
+                    <input class="long" type="text" name="room" value="{{row.room}}" />
                 </div>
             </div>
             <div class="form">
                 <p>Дата отправления</p>
-                <input type="date" name="departureDate">
+                <input type="date" name="departureDate" value={{row.departureDate}}>
                 <p>Дата регистрации</p>
-                <input type="date" name="dateOfRegistration" id="nowDate" :value=nowDate()>
+                <input type="date" name="dateOfRegistration" value={{row.dateOfRegistration}}>
             </div>
             <div class="form">
                 <p>Скан заявки</p>
                 <input type="file" name="scanApplication" accept="application/pdf">
+                <a href="{{row.href}}">{{row.name}}</a>
+                <input type="hidden" name="idscanapplication" value="{{row.idscanapplication}}">
             </div>
             <div>
                 <input type="submit" value="Сохранить">

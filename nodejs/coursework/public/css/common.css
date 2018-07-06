@@ -6,6 +6,7 @@ body {
   min-width: 230px;
   max-width: 1140px;
   margin: auto;
+  box-sizing: border-box;
 }
 
 .div-margins {
