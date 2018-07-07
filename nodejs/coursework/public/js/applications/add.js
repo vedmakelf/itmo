@@ -18,6 +18,9 @@ onload = () => {
   //   minLength: 2
   // });
 
+  /**
+   * подстановка текущйи даты
+   */
   new Vue({
     el: "#nowDate",
     data: {
@@ -28,6 +31,9 @@ onload = () => {
     }
   });
 
+  /**
+   * обработка живого поиска
+   */
   $(".FIO").autocomplete({
     type: "POST",
     serviceUrl: "/searech/fio",
@@ -49,6 +55,10 @@ onload = () => {
   });
 };
 
+/**
+ * обработка отправки заявки
+ * @param {*} data 
+ */
 function addApplication(data) {
   var $that = $(data),
     formData = new FormData($that.get(0));

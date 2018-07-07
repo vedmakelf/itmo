@@ -1,4 +1,7 @@
 onload = () => {
+  /**
+   * обработка живого поиска
+   */
   $(".FIO").autocomplete({
     type: "POST",
     serviceUrl: "/searech/fio",
@@ -20,6 +23,10 @@ onload = () => {
   });
 };
 
+/**
+ * обработки отправки заявки на редактирование
+ * @param {*} data 
+ */
 function editApplication(data) {
   var $that = $(data),
     formData = new FormData($that.get(0));

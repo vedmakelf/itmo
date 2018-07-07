@@ -1,5 +1,8 @@
 onload = () => {};
 
+/**
+ * функция поиска по таблице
+ */
 function search() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("searchText");

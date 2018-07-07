@@ -85,6 +85,12 @@ router.post("/edit", function(req, res, next) {
   }
 });
 
+/**
+ * функция изменение заявки
+ * @param {*} params 
+ * @param {*} req 
+ * @param {*} res 
+ */
 function updateApplication(params, req, res) {
   db.update(
     `UPDATE applications SET ? where idapplications = ${
@@ -255,6 +261,12 @@ router.post("/add", function(req, res, next) {
   }
 });
 
+/**
+ * функция вставки заявки
+ * @param {*} params 
+ * @param {*} req 
+ * @param {*} res 
+ */
 function insertApplication(params, req, res) {
   db.insert(
     "INSERT INTO `applications` SET ?",

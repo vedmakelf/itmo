@@ -5,6 +5,9 @@ var db = require("../db.js");
 
 module.exports = router;
 
+/**
+ * поиск ФИО в таблице users
+ */
 router.use("/fio", function(req, res, next) {
   db.query(
     `SELECT * FROM users where FIO like '${req.body.query}%' LIMIT 0, 10`,
